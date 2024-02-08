@@ -12,8 +12,9 @@ class CommentsSeeder extends Seeder
         DB::table('comments')->delete();
 
         DB::table('comments')->insert([
-            'id' => 1,
             'user_id' => 1,
+            'product_id' => 1,
+            'title' => 'titulo de prueba',
             'comment' => 'Comentario de prueba',
             'created_at' => '2021-01-01 00:00:00',
             'updated_at' => '2021-01-01 00:00:00']);

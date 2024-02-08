@@ -6,8 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model // Hereda de Model
 {
-    public function category()
-    {
-        return $this->hasOne(Category::class);
-    }
+
 }

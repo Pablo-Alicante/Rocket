@@ -2,26 +2,76 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Http\Request;
+
 class UserController extends Controller
 {
-    public function userLogin()
+    public function usersList()
     {
-        return response()->json(['user' => 'userLogin']);
+        $users = User::all();
+
+        return response()->json(['users' => $users]);
     }
 
-    public function userRegister()
+    public function userDetail($id)
     {
-        return response()->json(['user' => 'userRegister']);
+        $user = User::find($id);
+
+        return response()->json(['user' => $user]);
     }
 
-    public function userUpdate($id)
+    public function userRegister(Request $request)
     {
-        return response()->json(['user' => 'userUpdate']);
+        $user = new User();
+        $user->uuid = $request->uuid;
+        $user->role = $request->role;
+        $user->name = $request->name;
+        $user->surname = $request->surname;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->birthday = $request->birthday;
+        $user->password = bcrypt($request->password);
+        $user->email_verified_at = $request->email_verified_at;
+
+        $user->save();
+
+        return redirect()->route('usersList');
+    }
+
+    public function userUpdate($id, Request $request)
+    {
+        $user = User::find($id);
+        $user->uuid = $request->uuid;
+        $user->role = $request->role;
+        $user->name = $request->name;
+        $user->surname = $request->surname;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->birthday = $request->birthday;
+        $user->password = bcrypt($request->password);
+        $user->email_verified_at = $request->email_verified_at;
+
+        $user->save();
+
+        return redirect()->route('usersList');
     }
 
     public function userDelete($id)
     {
-        return response()->json(['user' => 'userDelete']);
+
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect()->route('usersList');
+    }
+
+    // PENDIENTE DE REVISAR
+    public function userLogin()
+    {
+        return response()->json(['user' => 'userLogin']);
     }
 
     public function userFavorite($id)

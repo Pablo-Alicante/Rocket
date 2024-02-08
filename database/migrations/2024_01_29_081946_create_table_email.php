@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('menu', function (Blueprint $table) {
-            $table->id();
-            $table->text('name');
-            $table->boolean('active');
-            $table->integer('category_id');
+        Schema::create('emails', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('from');
+            $table->string('to');
+            $table->string('subject');
+            $table->string('body');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('menu');
+        Schema::dropIfExists('emails');
     }
 };

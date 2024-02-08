@@ -6,18 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
-    public function order()
-    {
-        return $this->hasOne(Order::class);
-    }
 
-    public function cartline()
-    {
-        return $this->hasMany(CartLine::class);
-    }
 }
 
-$cart = new Cart(['name' => 'Processors']);
+/*$cart = new Cart(['name' => 'Processors']);
 $cart->save();
 $cartLine = new CartLine(['name' => 'Intel i3']);
 $cart->cartlines()->save($cartLine);
@@ -28,4 +20,4 @@ $cartLine->save();
 $cart->cartline()->saveMany([
     new CartLine(['name' => 'Intel i5']),
     new CartLine(['name' => 'Intel i7']),
-]);
+]);*/

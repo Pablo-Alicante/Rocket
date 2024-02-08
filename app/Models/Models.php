@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Models extends Model
 {
-    public function Category()
-    {
-        return $this->belongsTo(Category::class);
-    }
+    protected $table = 'models';
+
+    protected $primaryKey = 'id';
 }

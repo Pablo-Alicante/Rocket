@@ -43,20 +43,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
-    public function comments()
-    {
-        return $this->belongsTo(Comment::class);
-    }
-
-    public function orders()
-    {
-        return $this->belongsTo(Order::class);
-    }
 }
-
-$user = new User(['name' => 'Ejemplo']);
-$user->save();
-
-$comments = new Comment(['number' => '987654321']);
-$user->comments()->save($comments);

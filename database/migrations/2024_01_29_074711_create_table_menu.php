@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('models', function (Blueprint $table) {
-            $table->id();
+        Schema::create('menu', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('name');
+            $table->string('url');
             $table->string('code');
-            $table->string('description');
+            $table->string('category_id');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });
+
     }
 
     /**
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('models');
+        Schema::dropIfExists('menu');
     }
 };

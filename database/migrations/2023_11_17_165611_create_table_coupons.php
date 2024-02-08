@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('coupons', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->text('uuid')->unique();
             $table->boolean('active');
             $table->timestamp('init_at');

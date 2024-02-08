@@ -15,11 +15,9 @@ class Cart_LinesSeeder extends Seeder
         DB::table('cart_lines')->delete();
 
         DB::table('cart_lines')->insert([
-            'id' => 1,
-            'uuid' => '1234567890',
             'cart_id' => 1,
-            'product_id' => 1,
-            'units' => 1,
+            'product_id' => 2,
+            'units' => 3,
             'total_base_price' => 10,
             'total_tax' => 10,
             'total_price' => 10,

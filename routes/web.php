@@ -1,32 +1,44 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CartLineController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\EmailController;
-use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\InicioController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ModelController;
 use App\Http\Controllers\NewsletterController;
-use App\Http\Controllers\SearchController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderLineController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('home');
-})->name('home');
+})->name('home');*/
 
+Route::get('/', [InicioController::class, 'index'])->name('home');
+
+// Lineas de carito
+Route::get('/cartlines', [CartLineController::class, 'cartlines'])->name('cartlines');
+
+//Carritos  // HECHO Y REPASADO
 // NOTA: Esto es el ejercicio 4.
-Route::group(['prefix' => '/cart'], function () {
-    Route::get('/', [CartController::class, 'cart']); //Obtengo todos los carritos
-    Route::get('/{id}', [CartController::class, 'cartId']); //Obtengo un carrito por id
-    Route::post('/{id}/product', [CartController::class, 'cartIdProduct']); //Añado un producto a un carrito
-    Route::put('/{id}/product', [CartController::class, 'cartIdProductAdd']); //Actualizo un producto a un carrito
-    Route::delete('/{id}/line/{id_line}', [CartController::class, 'cartIdProductDelete']); //Borro un producto de un carrito
-    Route::post('/{id}/coupon', [CartController::class, 'cartIdCoupon']); //Añado un cupón a un carrito
-    Route::put('/{id}/coupon', [CartController::class, 'cartIdCouponAdd']); //Actualizo un cupón a un carrito (no sé si es necesario
-    Route::delete('/{id}/coupon', [CartController::class, 'cartIdCouponDelete']); //Borro un cupón de un carrito
-});
+// Route::group(['prefix' => '/cart'], function () {
+Route::get('/carts', [CartController::class, 'carts'])->name('carts'); //Obtengo todos los carritos
+Route::get('cart/{id}', [CartController::class, 'cartId']); //Obtengo un carrito por id
+Route::get('cart/{id}/product', [CartController::class, 'cartIdProduct']);
+Route::post('cart/{id}/product/{id_product}', [CartController::class, 'cartIdProductAdd']); //Añado un producto a un carrito
+Route::delete('cart/{id}/line/{id_line}', [CartController::class, 'cartIdProductDelete']); //Borro un producto de un carrito
+Route::get('cart/{id}/coupon/{id_coupon}', [CartController::class, 'cartIdCoupon']); //Añado un cupón a un carrito
+Route::get('cart/{id}/coupon', [CartController::class, 'cartIdCouponDelete']); //Borro un cupón de un carrito
+//});
 
 /* NOTA: Esto está comentado porque es el ejercicio 1 y 2 y lo del ejercicio 4 lo sustituye
 Route::post('/cart', [CartController::class, 'cart']);
@@ -38,21 +50,86 @@ Route::post('/cart/{id}/coupon', [CartController::class, 'cartIdCoupon']);
 Route::delete('/cart/{id}/coupon', [CartController::class, 'cartIdCouponDelete']);
 */
 
+//Categorías // HECHO Y REPASADO
+Route::get('/categories', [CategoryController::class, 'categories'])->name('categories');
+Route::get('/category/{id}', [CategoryController::class, 'category']);
+Route::post('/category/CategoryAdd', [CategoryController::class, 'categoryAdd']);
+Route::delete('/category/{id}/CategoryDelete', [CategoryController::class, 'categoryDelete'])->name('categoryDelete');
+Route::post('/category/{id}/CategoryUpdate', [CategoryController::class, 'categoryUpdate']);
+
+//Coupon  // HECHO Y REPASADO
+Route::get('/coupons', [CouponController::class, 'coupons'])->name('coupons');
+Route::get('/coupon/{id}', [CouponController::class, 'coupon']);
+Route::post('/coupon/CouponAdd', [CouponController::class, 'couponAdd']);
+Route::delete('/coupon/{id}/CouponDelete', [CouponController::class, 'CouponDelete'])->name('couponDelete');
+Route::post('/coupon/{id}/CouponUpdate', [CouponController::class, 'CouponUpdate']);
+
+//Checkout
 Route::post('/checkout', [CheckoutController::class, 'checkout']);
 
+//Comentarios de los productos // HECHO Y REPASADO
+Route::post('/comment/product/{id}', [CommentController::class, 'productCommentAdd']);
+Route::delete('/comment/{id}/commentDelete', [CommentController::class, 'productCommentDelete'])->name('productCommentDelete');
+Route::post('/comment/{id}/commentUpdate', [CommentController::class, 'productCommentUpdate']);
+
+// Imágenes de los productos // HECHO
+Route::post('/images/product/{id}', [ImageController::class, 'productImageAdd']);
+Route::delete('/image/{id}/imageDelete', [ImageController::class, 'productImageDelete'])->name('productImageDelete');
+Route::post('/image/{id}/imageUpdate', [ImageController::class, 'productImageUpdate']);
+
+//Modelos // HECHO Y REPASADO
+Route::get('/models', [ModelController::class, 'models'])->name('models');
+Route::get('/model/{id}', [ModelController::class, 'model']);
+Route::post('/model/modelAdd', [ModelController::class, 'modelAdd']);
+Route::delete('/model/{id}/modelDelete', [ModelController::class, 'modelDelete'])->name('modelDelete');
+Route::post('/model/{id}/modelUpdate', [ModelController::class, 'modelUpdate']);
+
+//Newsletter // HECHO Y REPASADO
+Route::get('/newsletters', [NewsletterController::class, 'newsletters'])->name('newsletters');
+Route::get('/newsletter/{id}', [NewsletterController::class, 'newsletter']);
+Route::post('/newsletterAdd', [NewsletterController::class, 'newsletterAdd']);
+Route::delete('/newsletter/{id}/NewsletterDelete', [NewsletterController::class, 'newsletterDelete'])->name('newsletterDelete');
+Route::post('/newsletter/{id}/NewsletterUpdate', [NewsletterController::class, 'newsletterUpdate']);
+
+//Orders // HECHO Y REPASADO
+Route::get('/orders', [OrderController::class, 'orders'])->name('orders');
+Route::get('/order/{id}', [OrderController::class, 'orderId']);
+Route::post('/orderAdd', [OrderController::class, 'orderAdd']);
+Route::delete('/order/{id}/orderDelete', [OrderController::class, 'orderDelete'])->name('orderDelete');
+Route::post('/order/{id}/orderUpdate', [OrderController::class, 'orderUpdate']);
+
+//OrdersLines // HECHO Y REPASADO
+Route::get('/orderlines', [OrderLineController::class, 'orderlines'])->name('orderlines');
+Route::get('/orderline/{id}', [OrderLineController::class, 'orderlineId']);
+Route::post('/orderlineAdd', [OrderLineController::class, 'orderlineAdd']);
+Route::delete('/orderline/{id}/orderlineDelete', [OrderLineController::class, 'orderlineDelete'])->name('orderlineDelete');
+Route::post('/orderline/{id}/orderlineUpdate', [OrderLineController::class, 'orderlineUpdate']);
+
+//Productos // HECHO Y REPASADO
+Route::get('/products', [ProductController::class, 'products'])->name('products');
+Route::get('/product/{id}', [ProductController::class, 'product']);
+Route::post('/product/productAdd', [ProductController::class, 'productAdd']);
+Route::delete('/product/{id}/productDelete', [ProductController::class, 'productDelete'])->name('productDelete');
+Route::post('/product/{id}/productUpdate', [ProductController::class, 'productUpdate']);
+
+//Usuarios
 // NOTA: Esto es el ejercicio 4. OJO que el primero no sale en Yarc
-Route::group(['prefix' => '/user'], function () {
-    Route::post('/login', [UserController::class, 'userLogin']);
-    Route::post('/register', [UserController::class, 'userRegister']);
-    Route::put('/{id}', [UserController::class, 'userUpdate']);
-    Route::delete('/{id}', [UserController::class, 'userDelete'])->middleware('check.permissions');
-    Route::get('/{id}/favorite', [UserController::class, 'userFavorite']);
-    Route::post('/{id}/favorite/{product}', [UserController::class, 'userFavoriteAdd']);
-    Route::delete('/{id}/favorite/{product}', [UserController::class, 'userFavoriteDelete']);
-    Route::get('/{id}/orders', [UserController::class, 'orders']);
-    Route::post('/{id}/orders/{product}', [UserController::class, 'userOrdersAdd']); // Este lo he añadido después de la entrega a Javi
-    Route::get('/{id}/comments', [UserController::class, 'comments']);
-});
+//Route::group(['prefix' => '/user'], function () {
+Route::get('/user/list', [UserController::class, 'usersList'])->name('usersList');
+Route::get('/user/{id}', [UserController::class, 'userDetail'])->name('usersDetail');
+Route::post('/user/register', [UserController::class, 'userRegister'])->name('usersRegister');
+Route::post('/user/{id}/userUpdate', [UserController::class, 'userUpdate']);
+Route::delete('/user/{id}/userDelete', [UserController::class, 'userDelete'])->name('userDelete');
+Route::post('/user/login', [LoginController::class, 'authenticate'])->name('authenticate');
+
+Route::get('/{id}/favorite', [UserController::class, 'userFavorite']);
+Route::post('/{id}/favorite/{product}', [UserController::class, 'userFavoriteAdd']);
+Route::delete('/{id}/favorite/{product}', [UserController::class, 'userFavoriteDelete']);
+Route::post('/login', [UserController::class, 'userLogin']);
+Route::get('/{id}/orders', [UserController::class, 'orders']);
+Route::post('/{id}/orders/{product}', [UserController::class, 'userOrdersAdd']); // Este lo he añadido después de la entrega a Javi
+Route::get('/{id}/comments', [UserController::class, 'comments']);
+//});
 
 /* NOTA: Esto está comentado porque es el ejercicio 1 y 2 y lo del ejercicio 4 lo sustituye
 Route::post('/user/login', [UserController::class, 'userLogin']);
@@ -66,20 +143,6 @@ Route::get('/user/{id}/orders', [UserController::class, 'orders']);
 Route::get('/user/{id}/comments', [UserController::class, 'comments']);
 */
 
-Route::post('/newsletter', [NewsletterController::class, 'newsletter']);
-Route::delete('/newsletter', [NewsletterController::class, 'newsletterDelete']);
-
-Route::get('/category/{id}', [CategoryController::class, 'category']);
-Route::get('/category/{id}/products', [CategoryController::class, 'categoryProducts']);
-
-Route::get('/model/{id}', [ModelController::class, 'model']);
-Route::get('/model/{id}/comment', [ModelController::class, 'modelComment']);
-Route::post('/model/{id}/comment', [ModelController::class, 'modelCommentAdd']);
-
-Route::get('/menu', [MenuController::class, 'menu']);
-Route::get('/menu/{id}', [MenuController::class, 'menuId']);
-Route::post('/search', [SearchController::class, 'search']);
-
 // Ejercicio de Emails con Ramón
 // Route::get('/', function () {
 //    Mail::to('pablopenalverescolano@gmail.com')
@@ -87,7 +150,7 @@ Route::post('/search', [SearchController::class, 'search']);
 // });
 
 // Ejercicio 4.1.1
-Route::resource('emails', EmailController::class);
+// Route::resource('emails', EmailController::class);
 
 // El require de abajo es el que viene por defecto en Laravel
 require __DIR__.'/auth.php';

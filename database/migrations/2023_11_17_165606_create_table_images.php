@@ -12,10 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('images', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->text('image');
             $table->integer('product_id');
             $table->integer('order');
+            $table->boolean('active');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });

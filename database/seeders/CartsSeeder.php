@@ -12,8 +12,6 @@ class CartsSeeder extends Seeder
         DB::table('carts')->delete();
 
         DB::table('carts')->insert([
-            'id' => 1,
-            'uuid' => '1234567890',
             'active' => true,
             'order_id' => 1,
             'user_id' => 1,

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tienda online de tus accesorios preferidos para jugar a Magic: The Gathering" />
+  <title>Magic Merch</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <!-- <header>
+    <p>Rocket E-commerce</p>
+
+    <nav>
+      <ul>
+        <li><a href="#">Nombre Categoría</a></li>
+        <li><a href="#">Nombre Categoría</a></li>
+        <li><a href="#">Nombre Categoría</a></li>
+        <li><a href="#">Nombre Categoría</a></li>
+        <li><a href="#">Nombre Categoría</a></li>
+      </ul>
+    </nav>
+
+    <article>
+      <input type="text" placeholder="Buscar">
+      <button>Buscar</button>
+    </article>
+
+    <article>
+      <a href="#">Iniciar Sesión</a>
+      <a href="#">Registrarse</a>
+    </article>
+
+    <article>
+      <a href="#">Carrito</a>
+    </article>
+  </header> -->
+
+  <main class="container mx-auto">
+    <!-- <section>
+      <img src="#" alt="Imagen del banner">
+      <article>
+        <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia, assumenda dolor sequi illum iste aut nesciunt
+          non. Hic, quis saepe.</p>
+        <button>Ver más</button>
+      </article>
+    </section> -->
+
+    <section>
+      <header class="grid grid-cols-1 md:grid-cols-2 border-b mb-4 items-end">
+        <h2 class="text-3xl font-semibold">Los mas favoritos</h2>
+        <div class="md:text-right">
+        <a href="#" class="text-blue-300 text-sm underline">Ver mas favoritos</a>
+        </div>
+      </header>
+
+      <header class="flex flex-cols-2 border-b mb-4 items-end">
+        <h2 class="md:grow gap-4 text-3xl font-semibold">Los mas favoritos</h2>
+        <a href="#" class="text-blue-300 text-sm underline">Ver mas favoritos</a>
+      </header>
+
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <article class="bg-neutral-200 relative">
+          <a href="#">
+            <img src="#" alt="Imagen del producto" class="w-full transition hover:scale-110 bg-gray-500 w-64 h-64">
+              <div class="bg-red-500 px-3 lowercase absolute top-0 rotate-45 left-0 text-sm text-white">¡Oferta!</div>
+              <div class="bg-green-500 px-3 lowercase absolute -rotate-45 top-0 right-0 text-sm text-white">¡Actualizado!</div>
+            <h3 class="mt-2 font-semibold">Nombre del producto</h3>
+            <p class="text-sm text-gray-400">Lorem ipsum dolor sit amet consectetur.</p>
+          </a>
+            <p class="text-sm text-gray-400 my-2">3 Colores</p>
+            <p class="font-bold text-xl text-green-500 drop-shadow-xl">100 €</p>
+          <button class="bg-sky-500 p-4 rounded-xl text-white font-bold rounded-full p-2 hover:bg-sky-700">Añadir al Carrito</button>
+        </article>
+
+        <article class="bg-neutral-200 relative">
+          <a href="#">
+            <img src="#" alt="Imagen del producto" class="w-full transition hover:scale-110 bg-gray-500 w-64 h-64">
+            <h3 class="mt-2 font-semibold">Nombre del producto</h3>
+            <p class="text-sm text-gray-400">Lorem ipsum dolor sit amet consectetur.</p>
+            <p class="text-sm text-gray-400 my-2">3 Colores</p>
+            <p class="font-bold text-xl text-green-500 drop-shadow-xl">100 €</p>
+          </a>
+
+          <button class="bg-sky-500 p-4 rounded-xl text-white font-bold rounded-full p-2 hover:bg-sky-700">Añadir al Carrito</button>
+        </article>
+
+        <article class="bg-neutral-200 relative">
+          <a href="#">
+            <img src="#" alt="Imagen del producto" class="w-full transition hover:scale-110 bg-gray-500 w-64 h-64">
+            <h3 class="mt-2 font-semibold">Nombre del producto</h3>
+            <p class="text-sm text-gray-400">Lorem ipsum dolor sit amet consectetur.</p>
+            <p class="text-sm text-gray-400 my-2">3 Colores</p>
+            <p class="font-bold text-xl text-green-500 drop-shadow-xl">100 €</p>
+          </a>
+
+          <button class="bg-sky-500 p-4 rounded-xl text-white font-bold rounded-full p-2 hover:bg-sky-700">Añadir al Carrito</button>
+        </article>
+
+        <article class="bg-neutral-200 relative">
+            <a href="#">
+              <img src="#" alt="Imagen del producto" class="w-full transition hover:scale-110 bg-gray-500 w-64 h-64">
+              <h3 class="mt-2 font-semibold">Nombre del producto</h3>
+              <p class="text-sm text-gray-400">Lorem ipsum dolor sit amet consectetur.</p>
+              <p class="text-sm text-gray-400 my-2">3 Colores</p>
+              <p class="font-bold text-xl text-green-500 drop-shadow-xl">100 €</p>
+            </a>
+
+            <button class="bg-sky-500 p-4 rounded-xl text-white font-bold rounded-full p-2 hover:bg-sky-700">Añadir al Carrito</button>
+        </article>
+      </div>
+
+    </section>
+
+    <article>
+      <h2>Newsletter</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    </article>
+  </main>
+
+
+
+  <footer class="bg-slate-700 text-white py-8">
+    <div class="container mx-auto flex mb-8">
+      <article>
+        <h2>Rocket E-commerce</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Youtube</a>
+        <a href="#">Contacto</a>
+      </article>
+
+      <nav class="grid-cols-3">
+        <div>
+          <h3 class="font-bold"><a href="#">Información</a></h3>
+          <ul>
+            <li>
+              <a href="#">Información 1</a>
+            </li>
+            <li>
+              <a href="#">Información 2</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-bold"><a href="#">Ayuda</a></h3>
+          <ul>
+            <li>
+              <a href="#">Ayuda 1</a>
+            </li>
+            <li>
+              <a href="#">Ayuda 2</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-bold"><a href="#">Nosotros</a></h3>
+          <a href="#">Nosotros 1</a>
+          <a href="#">Nosotros 2</a>
+        </div>
+
+      </nav>
+    </div>
+
+    <div class="flex justify-around">
+      <p>© 2020 Rocket E-commerce</p>
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Política de Cookies</a>
+    </div>
+  </footer>
+</body>
+
+</html>

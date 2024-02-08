@@ -5,16 +5,17 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class NewslettersSeeder extends Seeder
+class EmailsSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('newsletters')->delete();
+        DB::table('emails')->delete();
 
-        DB::table('newsletters')->insert([
-            'email' => 'correofalso@email.com',
-            'is_active' => true,
-            'user_id' => 1,
+        DB::table('emails')->insert([
+            'from' => 'Pablo',
+            'to' => 'Javi',
+            'subject' => 'Hola',
+            'body' => 'Hola Javi, ¿qué tal?',
             'created_at' => '2021-01-01 00:00:00',
             'updated_at' => '2021-01-01 00:00:00',
         ]);

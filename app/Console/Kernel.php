@@ -2,11 +2,20 @@
 
 namespace App\Console;
 
+use App\Console\Commands\ElasticIndex;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
+    /**
+     * The Artisan commands provided by your application.
+     *
+     * @var array
+     */
+    protected $commands = [
+        //
+    ];
 
     /**
      * Register the commands for the application.
@@ -18,10 +27,10 @@ class Kernel extends ConsoleKernel
         require base_path('routes/console.php');
     }
 
-    protected function schedule(Schedule $schedule):void
+    protected function schedule(Schedule $schedule): void
     {
         $schedule->command(ElasticIndex::class)
-        ->sundays()
-        ->at ('22:00');
+            ->sundays()
+            ->at('22:00');
     }
 }
