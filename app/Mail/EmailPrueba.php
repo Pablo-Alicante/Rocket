@@ -3,23 +3,18 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-
-
-class TestEmail extends Mailable
+class EmailPrueba extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-
-
     public function __construct()
     {
         //
@@ -31,7 +26,7 @@ class TestEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Test Email',
+            subject: 'Email Prueba',
         );
     }
 
@@ -41,7 +36,11 @@ class TestEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.pruebas.two',
+            view: 'emails.envio',
+            with: [
+                'orderName' => 'Nombre del pedido',
+                'orderPrice' => 'Precio del pedido',
+            ],
         );
     }
 

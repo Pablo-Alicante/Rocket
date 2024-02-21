@@ -21,8 +21,17 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             echo 'Login correcto';
+            return redirect()->intended('users');
         } else {
             echo 'The provided credentials do not match our records.';
+
+        return back()->withErrors([
+
+            'email' => 'The provided credentials do not match our records.',
+
+            ])->onlyInput('email');
+
         }
+
     }
 }

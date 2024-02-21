@@ -7,6 +7,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\LoginController;
@@ -115,20 +116,19 @@ Route::post('/product/{id}/productUpdate', [ProductController::class, 'productUp
 //Usuarios
 // NOTA: Esto es el ejercicio 4. OJO que el primero no sale en Yarc
 //Route::group(['prefix' => '/user'], function () {
-Route::get('/user/list', [UserController::class, 'usersList'])->name('usersList');
-Route::get('/user/{id}', [UserController::class, 'userDetail'])->name('usersDetail');
+Route::get('/users', [UserController::class, 'users'])->name('users');
+Route::get('/user/{id}', [UserController::class, 'user'])->name('user');
 Route::post('/user/register', [UserController::class, 'userRegister'])->name('usersRegister');
-Route::post('/user/{id}/userUpdate', [UserController::class, 'userUpdate']);
-Route::delete('/user/{id}/userDelete', [UserController::class, 'userDelete'])->name('userDelete');
+Route::post('/user/{id}/Update', [UserController::class, 'userUpdate']);
+Route::delete('/user/{id}/Delete', [UserController::class, 'userDelete'])->name('userDelete');
 Route::post('/user/login', [LoginController::class, 'authenticate'])->name('authenticate');
+Route::get('user/{id}/favorites', [FavoriteController::class, 'userFavorite'])->name('userFavorite');
+Route::post('/user/favorite', [FavoriteController::class, 'userFavoriteAdd']);
+Route::delete('user/favorite/{id}', [FavoriteController::class, 'userFavoriteDelete']);
+Route::get('user/{id}/orders', [UserController::class, 'orders'])->name('userOrders');
+Route::get('user/{id}/comments', [UserController::class, 'userComments']);
+Route::post('user/{id}/orders', [UserController::class, 'userOrdersAdd']);
 
-Route::get('/{id}/favorite', [UserController::class, 'userFavorite']);
-Route::post('/{id}/favorite/{product}', [UserController::class, 'userFavoriteAdd']);
-Route::delete('/{id}/favorite/{product}', [UserController::class, 'userFavoriteDelete']);
-Route::post('/login', [UserController::class, 'userLogin']);
-Route::get('/{id}/orders', [UserController::class, 'orders']);
-Route::post('/{id}/orders/{product}', [UserController::class, 'userOrdersAdd']); // Este lo he añadido después de la entrega a Javi
-Route::get('/{id}/comments', [UserController::class, 'comments']);
 //});
 
 /* NOTA: Esto está comentado porque es el ejercicio 1 y 2 y lo del ejercicio 4 lo sustituye
@@ -142,6 +142,9 @@ Route::delete('/user/{id}/favorite/{product}', [UserController::class, 'userFavo
 Route::get('/user/{id}/orders', [UserController::class, 'orders']);
 Route::get('/user/{id}/comments', [UserController::class, 'comments']);
 */
+
+Route::get('/emails', [EmailController::class, 'emails'])->name('emails');
+
 
 // Ejercicio de Emails con Ramón
 // Route::get('/', function () {

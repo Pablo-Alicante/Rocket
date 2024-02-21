@@ -108,6 +108,12 @@ return [
 
     'migrations' => 'migrations',
 
+    'elasticsearch' => [
+        'hosts' => [
+            env('ELASTICSEARCH_HOST', 'http://localhost:9200'),
+        ],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Redis Databases

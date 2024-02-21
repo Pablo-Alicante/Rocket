@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\OrderLine;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -36,13 +37,15 @@ class OrderLineController extends Controller
     public function OrderlineAdd(Request $request)
     {
         $orderline = new OrderLine();
-        $orderline->uuid = $request->uuid;
         $orderline->order_id = $request->order_id;
         $orderline->product_id = $request->product_id;
+
+        $product = Product::find( $request->product_id);
+
         $orderline->units = $request->units;
-        $orderline->price_base = $request->price_base;
-        $orderline->price_tax = $request->price_tax;
-        $orderline->price_total = $request->price_total;
+        $orderline->price_base = $product->price;
+        $orderline->price_tax = 0.21;
+        $orderline->price_total = ($product->price * $request->units) * (1 + $orderline->price_tax);
         $orderline->save();
 
         return redirect()->route('orderlines');
