@@ -15,7 +15,6 @@ class UsersTableSeeder extends Seeder
         // Añadimos una entrada a esta tabla
         DB::table('users')->insert([
             [
-                'uuid' => '1234567890',
                 'role' => 'customer',
                 'name' => 'Luisito',
                 'surname' => 'Martinez',

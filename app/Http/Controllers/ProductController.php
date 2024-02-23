@@ -37,7 +37,6 @@ class ProductController extends Controller
         //  echo die();
         $product = new Product(); // creo un nuevo objeto Product
 
-        $product->uuid = $request->uuid;
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
@@ -55,7 +54,6 @@ class ProductController extends Controller
 
         $product = Product::find($id);
 
-        $product->uuid = $request->uuid;
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;

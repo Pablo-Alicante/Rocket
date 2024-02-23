@@ -54,7 +54,6 @@ class OrderLineController extends Controller
     public function orderlineUpdate($id, Request $request)
     {
         $orderline = OrderLine::find($id);
-        $orderline->uuid = $request->uuid;
         $orderline->order_id = $request->order_id;
         $orderline->product_id = $request->product_id;
         $orderline->units = $request->units;

@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('uuid')->unique();
             $table->enum('role', ['admin', 'customer'])->default('customer');
             $table->string('name');
             $table->string('surname');

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('uuid')->unique();
             $table->integer('user_id');
             $table->text('user_comments')->nullable();
             $table->integer('cart_id');
             $table->integer('coupon_id')->nullable();
+            $table->enum('status', ['pendiente', 'procesando', 'completado', 'cancelado'])->default('pendiente');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });

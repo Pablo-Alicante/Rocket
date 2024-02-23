@@ -43,4 +43,13 @@ class CommentController extends Controller
         return redirect()->route('products'); // redirijo a la página de products
 
     }
+
+    public function validateComment($id, $status)
+    {
+        $comment = Comment::find($id);
+        $comment->active = $status;
+        $comment->save();
+
+        return redirect()->route('products'); // redirijo a la página de products
+    }
 }

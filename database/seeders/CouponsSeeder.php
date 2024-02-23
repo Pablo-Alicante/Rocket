@@ -12,7 +12,6 @@ class CouponsSeeder extends Seeder
         DB::table('coupons')->delete();
 
         DB::table('coupons')->insert([
-            'uuid' => '123450',
             'active' => true,
             'init_at' => '2021-01-01 00:00:00',
             'end_at' => '2021-01-01 00:00:00',

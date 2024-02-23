@@ -15,9 +15,9 @@ class OrdersSeeder extends Seeder
         DB::table('orders')->delete();
 
         DB::table('orders')->insert([
-            'uuid' => '1234567890',
             'user_id' => 1,
             'user_comments' => 'Lorem ipsum dolor sit amet',
+            'status' => 'pendiente',
             'cart_id' => 1,
             'coupon_id' => 1,
             'created_at' => '2021-01-01 00:00:00',

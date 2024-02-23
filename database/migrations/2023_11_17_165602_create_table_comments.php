@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('product_id');
             $table->text('title');
             $table->text('comment');
+            $table->boolean('active')->default(false);
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });

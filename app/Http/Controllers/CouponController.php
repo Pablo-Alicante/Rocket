@@ -32,7 +32,6 @@ class CouponController extends Controller
     public function couponAdd(Request $request)
     {
         $coupon = new Coupon();
-        $coupon->uuid = $request->uuid;
         $coupon->active = $request->active;
         $coupon->init_at = $request->init_at;
         $coupon->end_at = $request->end_at;
@@ -55,7 +54,6 @@ class CouponController extends Controller
     {
         $coupon = Coupon::find($id);
 
-        $coupon->uuid = $request->uuid;
         $coupon->active = $request->active;
         $coupon->init_at = $request->init_at;
         $coupon->end_at = $request->end_at;

@@ -37,7 +37,6 @@ class UserController extends Controller
     public function userRegister(Request $request)
     {
         $user = new User();
-        $user->uuid = $request->uuid;
         $user->role = $request->role;
         $user->name = $request->name;
         $user->surname = $request->surname;
@@ -62,7 +61,6 @@ class UserController extends Controller
     public function userUpdate($id, Request $request)
     {
         $user = User::find($id);
-        $user->uuid = $request->uuid;
         $user->role = $request->role;
         $user->name = $request->name;
         $user->surname = $request->surname;

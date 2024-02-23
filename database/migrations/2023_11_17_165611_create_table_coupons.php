@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('coupons', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('uuid')->unique();
             $table->boolean('active');
             $table->timestamp('init_at');
             $table->timestamp('end_at');

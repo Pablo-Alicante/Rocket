@@ -37,7 +37,6 @@ class OrderController extends Controller
     public function OrderAdd(Request $request)
     {
         $order = new Order();
-        $order->uuid = $request->uuid;
         $order->user_id = $request->user_id;
         $order->user_comments = $request->user_comments;
         $order->cart_id = $request->cart_id;
@@ -51,7 +50,6 @@ class OrderController extends Controller
     public function orderUpdate($id, Request $request)
     {
         $order = Order::find($id);
-        $order->uuid = $request->uuid;
         $order->user_id = $request->user_id;
         $order->user_comments = $request->user_comments;
         $order->cart_id = $request->cart_id;
@@ -71,6 +69,15 @@ class OrderController extends Controller
             $order_lines[$i]->delete();
         }
         $order->delete();
+
+        return redirect()->route('orders');
+    }
+
+    public function changeStatus($id, $status)
+    {
+        $order = Order::find($id);
+        $order->status = $status;
+        $order->save();
 
         return redirect()->route('orders');
     }

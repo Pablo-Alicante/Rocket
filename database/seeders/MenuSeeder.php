@@ -15,7 +15,6 @@ class MenuSeeder extends Seeder
         DB::table('menu')->delete();
 
         DB::table('menu')->insert([
-            'uuid' => '1234567890',
             'name' => 'Inicio',
             'url' => '/',
             'code' => 'home',

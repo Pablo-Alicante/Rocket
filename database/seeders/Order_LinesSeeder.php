@@ -15,7 +15,6 @@ class Order_LinesSeeder extends Seeder
         DB::table('order_lines')->delete();
 
         DB::table('order_lines')->insert([
-            'uuid' => '1234567890',
             'order_id' => 1,
             'product_id' => 1,
             'units' => 1,
