@@ -132,7 +132,7 @@ Route::get('user/{id}/orders', [UserController::class, 'orders'])->name('userOrd
 Route::get('user/{id}/comments/{id}', [UserController::class, 'userComments']);
 Route::post('user/{id}/orders', [UserController::class, 'userOrdersAdd']);
 
-//Search
+//Search // HECHO Y REPASADO
 Route::post('/searchProduct', [SearchController::class, 'searchProduct'])->name('search');
 Route::post('/searchUser', [SearchController::class, 'searchUser'])->name('search');
 Route::post('/searchOrder', [SearchController::class, 'searchOrder'])->name('search');
