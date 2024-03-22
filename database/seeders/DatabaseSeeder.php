@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
         // Llamamos a otro fichero de semillas
         $this->call(ModelsSeeder::class);
         $this->call(UsersTableSeeder::class);
-        $this->call(UsersAdminTableSeeder::class);
         $this->call(NewslettersSeeder::class);
         $this->call(CommentsSeeder::class);
         $this->call(CategoriesSeeder::class);
